@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-namespace Players.PlayerStat
-{
+using UnityEngine.Events;
+
 	public class PlayerStats : MonoBehaviour
 	{
-		public delegate void OnHealthChangedDelegate();
-
-		public OnHealthChangedDelegate _onHealthChangedCallback;
+		[SerializeField] private float health;
+		[SerializeField] private float maxHealth;
+		[SerializeField] private float maxTotalHealth;
+		
+		public UnityAction OnHealthChanged;
 
 		private static PlayerStats instance;
 
@@ -19,6 +21,10 @@ namespace Players.PlayerStat
 				return instance;
 			}
 		}
+		
+		public float Health => health;
+		public float MaxHealth => maxHealth;
+		public float MaxTotalHealth => maxTotalHealth;
 
 		private void Awake()
 		{
@@ -27,16 +33,6 @@ namespace Players.PlayerStat
 			else
 				Destroy(gameObject);
 		}
-
-		[SerializeField] private float health;
-		[SerializeField] private float maxHealth;
-		[SerializeField] private float maxTotalHealth;
-
-		public float Health => health;
-
-		public float MaxHealth => maxHealth;
-
-		public float MaxTotalHealth => maxTotalHealth;
 
 		public void Heal(float health)
 		{
@@ -57,7 +53,7 @@ namespace Players.PlayerStat
 				maxHealth += 1;
 				health = maxHealth;
 
-				_onHealthChangedCallback?.Invoke();
+				OnHealthChanged?.Invoke();
 			}
 		}
 
@@ -65,7 +61,6 @@ namespace Players.PlayerStat
 		{
 			health = Mathf.Clamp(health, 0, maxHealth);
 
-			_onHealthChangedCallback?.Invoke();
+			OnHealthChanged?.Invoke();
 		}
 	}
-}

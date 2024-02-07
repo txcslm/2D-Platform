@@ -2,78 +2,57 @@
 using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 
-namespace Players.PlayerStat
+public class HealthBarViewer : MonoBehaviour
 {
-	public class HealthBarViewer : MonoBehaviour
+	[SerializeField] private Transform heartsParent;
+	[SerializeField] private GameObject heartContainerPrefab;
+
+	private GameObject[] _heartContainers;
+	private Image[] _heartFills;
+
+	private void Start()
 	{
-		private GameObject[] _heartContainers;
-		private Image[] _heartFills;
+		_heartContainers = new GameObject[(int)PlayerStats.Instance.MaxTotalHealth];
+		_heartFills = new Image[(int)PlayerStats.Instance.MaxTotalHealth];
 
-		public Transform heartsParent;
-		public GameObject heartContainerPrefab;
+		PlayerStats.Instance.OnHealthChanged += UpdateHeartsHUD;
+		InstantiateHeartContainers();
+		UpdateHeartsHUD();
+	}
 
-		private void Start()
+	private void UpdateHeartsHUD()
+	{
+		SetHeartContainers();
+		SetFilledHearts();
+	}
+
+	private void SetHeartContainers()
+	{
+		for (int i = 0; i < _heartContainers.Length; i++)
+			_heartContainers[i].SetActive(i < PlayerStats.Instance.MaxHealth);
+	}
+
+	private void SetFilledHearts()
+	{
+		for (int i = 0; i < _heartFills.Length; i++)
+			_heartFills[i].fillAmount = i < PlayerStats.Instance.Health ? 1 : 0;
+
+		if (PlayerStats.Instance.Health % 1 != 0)
 		{
-			_heartContainers = new GameObject[(int)PlayerStats.Instance.MaxTotalHealth];
-			_heartFills = new Image[(int)PlayerStats.Instance.MaxTotalHealth];
-
-			PlayerStats.Instance._onHealthChangedCallback += UpdateHeartsHUD;
-			InstantiateHeartContainers();
-			UpdateHeartsHUD();
+			int lastPos = Mathf.FloorToInt(PlayerStats.Instance.Health);
+			_heartFills[lastPos].fillAmount = PlayerStats.Instance.Health % 1;
 		}
+	}
 
-		private void UpdateHeartsHUD()
+	private void InstantiateHeartContainers()
+	{
+		for (int i = 0; i < PlayerStats.Instance.MaxTotalHealth; i++)
 		{
-			SetHeartContainers();
-			SetFilledHearts();
-		}
-
-		private void SetHeartContainers()
-		{
-			for (int i = 0; i < _heartContainers.Length; i++)
-			{
-				if (i < PlayerStats.Instance.MaxHealth)
-				{
-					_heartContainers[i].SetActive(true);
-				}
-				else
-				{
-					_heartContainers[i].SetActive(false);
-				}
-			}
-		}
-
-		private void SetFilledHearts()
-		{
-			for (int i = 0; i < _heartFills.Length; i++)
-			{
-				if (i < PlayerStats.Instance.Health)
-				{
-					_heartFills[i].fillAmount = 1;
-				}
-				else
-				{
-					_heartFills[i].fillAmount = 0;
-				}
-			}
-
-			if (PlayerStats.Instance.Health % 1 != 0)
-			{
-				int lastPos = Mathf.FloorToInt(PlayerStats.Instance.Health);
-				_heartFills[lastPos].fillAmount = PlayerStats.Instance.Health % 1;
-			}
-		}
-
-		private void InstantiateHeartContainers()
-		{
-			for (int i = 0; i < PlayerStats.Instance.MaxTotalHealth; i++)
-			{
-				GameObject temp = Instantiate(heartContainerPrefab, heartsParent, false);
-				_heartContainers[i] = temp;
-				Vector2 position = new Vector2(temp.transform.position.x + i, temp.transform.position.y);
-				temp.transform.position = position;
-				_heartFills[i] = temp.transform.Find("HeartFill").GetComponent<Image>();
-			}
+			GameObject temp = Instantiate(heartContainerPrefab, heartsParent, false);
+			_heartContainers[i] = temp;
+			Vector2 position = new Vector2(temp.transform.position.x + i, temp.transform.position.y);
+			temp.transform.position = position;
+			_heartFills[i] = temp.transform.Find("HeartFill").GetComponent<Image>();
 		}
 	}
 }

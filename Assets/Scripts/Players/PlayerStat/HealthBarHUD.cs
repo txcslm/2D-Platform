@@ -4,19 +4,19 @@ namespace Players.PlayerStat
 {
     public class HealthBarHUD : MonoBehaviour
     {
-        public void AddHealth()
+        private void AddHealth()
         {
             PlayerStats.Instance.AddHealth();
         }
 
-        public void Heal(float health)
+        private void Heal(float health)
         {
             PlayerStats.Instance.Heal(health);
         }
 
-        public void Hurt(float dmg)
+        private void Hurt(float damage)
         {
-            PlayerStats.Instance.TakeDamage(dmg);
+            PlayerStats.Instance.TakeDamage(damage);
         }
     }
 }

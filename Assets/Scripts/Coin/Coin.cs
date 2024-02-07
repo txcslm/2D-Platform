@@ -6,11 +6,12 @@ public class Coin : MonoBehaviour
 {
 	[SerializeField] private int scoreValue = 5;
 	[SerializeField] private ScoreCounter scoreCounter;
-	[SerializeField] private Player _player;
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (_player != null)
+		Player player = other.gameObject.GetComponent<Player>();
+
+		if (player != null)
 		{
 			Destroy(gameObject);
 

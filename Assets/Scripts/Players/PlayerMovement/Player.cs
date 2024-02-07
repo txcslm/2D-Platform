@@ -14,8 +14,11 @@ namespace Players.PlayerMovement
 		{
 			HandleInput();
 			FlipCharacter();
-			if(IsDiyng())
+
+			if (IsDiyng())
+			{
 				Die();
+			}
 		}
 
 		private void HandleInput()
