@@ -6493,8 +6493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0f78e4acfe21a4594760304164796e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heartsParent: {fileID: 271792360}
-  _heartContainerPrefab: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
+  heartsParent: {fileID: 271792360}
+  heartContainerPrefab: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
 --- !u!4 &272627511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2071477925979347504, guid: d1394c09741d4144ab22339b39cf4c49, type: 3}
