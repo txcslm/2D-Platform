@@ -40,9 +40,9 @@ using UnityEngine.Events;
 			ClampHealth();
 		}
 
-		public void TakeDamage(float dmg)
+		public void TakeDamage(float damage)
 		{
-			health -= dmg;
+			health -= damage;
 			ClampHealth();
 		}
 
