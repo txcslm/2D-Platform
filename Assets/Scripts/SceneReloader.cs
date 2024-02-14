@@ -1,8 +1,5 @@
-using System;
-using Players.PlayerStat;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class SceneReloader : MonoBehaviour
 {

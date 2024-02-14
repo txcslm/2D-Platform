@@ -1,4 +1,3 @@
-using Players.PlayerStat;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -39,8 +38,10 @@ public abstract class Character : MonoBehaviour
         _currentState = CharacterState.Idle;
     }
 
-    protected void Move(float horizontalInput) =>
+    protected void Move(float horizontalInput)
+    {
         _rigidbody2D.velocity = new Vector2(horizontalInput * moveSpeed, _rigidbody2D.velocity.y);
+    }
 
     protected bool IsGrounded()
     {
@@ -48,9 +49,11 @@ public abstract class Character : MonoBehaviour
         return hit.collider != null;
     }
 
-    protected virtual bool IsDiyng() =>
-        _playerStats.Health == 0;
-
+    protected virtual bool IsDiyng()
+    {
+        return _playerStats.Health == 0;
+    }
+    
     protected virtual void Die()
     {
         _currentState = CharacterState.Die;

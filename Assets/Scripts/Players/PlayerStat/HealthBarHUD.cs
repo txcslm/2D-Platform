@@ -14,9 +14,9 @@ namespace Players.PlayerStat
             PlayerStats.Instance.Heal(health);
         }
 
-        private void Hurt(float damage)
+        private void Hurt(float dmg)
         {
-            PlayerStats.Instance.TakeDamage(damage);
+            PlayerStats.Instance.TakeDamage(dmg);
         }
     }
 }

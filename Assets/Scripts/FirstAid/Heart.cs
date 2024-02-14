@@ -26,9 +26,6 @@ namespace FirstAid
 
 		private void OnTriggerEnter2D(Collider2D other)
 		{
-			if (_playerStats.Health == _playerStats.MaxTotalHealth)
-				return;
-			
 			TryDestroyObject();
 			
 			if ((playerLayer.value & 1 << other.gameObject.layer) != 0)
