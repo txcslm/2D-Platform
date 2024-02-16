@@ -12,7 +12,7 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected float jumpForce = 10f; 
     [SerializeField] protected float groundRaycastDistance = 0.1f;
     
-    [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private LayerMask _groundLayerMask;
 
     protected readonly int Speed = Animator.StringToHash(nameof(Speed));
     protected readonly int Diyng = Animator.StringToHash(nameof(Diyng));
@@ -21,6 +21,7 @@ public abstract class Character : MonoBehaviour
     protected Animator _animator;
     protected CharacterState _currentState;
     protected PlayerStats _playerStats;
+    protected SpriteRenderer _spriteRenderer;
 
     protected enum CharacterState
     {
@@ -32,6 +33,7 @@ public abstract class Character : MonoBehaviour
 
     protected void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _playerStats = GetComponent<PlayerStats>();
@@ -45,7 +47,7 @@ public abstract class Character : MonoBehaviour
 
     protected bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, groundLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundRaycastDistance, _groundLayerMask);
         return hit.collider != null;
     }
 
@@ -62,20 +64,16 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void FlipCharacter()
     {
-        Vector3 scale = transform.localScale;
-
         float horizontalInput = Input.GetAxis(HorizontalInput);
 
         switch (horizontalInput)
         {
             case > 0:
-                scale.x = Mathf.Abs(scale.x);
+                _spriteRenderer.flipX = false;
                 break;
             case < 0:
-                scale.x = -Mathf.Abs(scale.x);
+                _spriteRenderer.flipX = true;
                 break;
         }
-
-        transform.localScale = scale;
     }
 }

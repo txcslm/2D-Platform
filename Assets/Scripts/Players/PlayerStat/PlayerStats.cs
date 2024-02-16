@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-	public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour
 	{
-		[SerializeField] private float health;
-		[SerializeField] private float maxHealth;
-		[SerializeField] private float maxTotalHealth;
+		[SerializeField] private float _health;
+		[SerializeField] private float _maxHealth;
+		[SerializeField] private float _maxTotalHealth;
 		
-		public UnityAction OnHealthChanged;
+		public UnityAction HealthChangedEvent;
 
 		private static PlayerStats instance;
 
@@ -22,9 +22,9 @@ using UnityEngine.Events;
 			}
 		}
 		
-		public float Health => health;
-		public float MaxHealth => maxHealth;
-		public float MaxTotalHealth => maxTotalHealth;
+		public float Health => _health;
+		public float MaxHealth => _maxHealth;
+		public float MaxTotalHealth => _maxTotalHealth;
 
 		private void Awake()
 		{
@@ -36,31 +36,31 @@ using UnityEngine.Events;
 
 		public void Heal(float health)
 		{
-			this.health += health;
+			this._health += health;
 			ClampHealth();
 		}
 
 		public void TakeDamage(float dmg)
 		{
-			health -= dmg;
+			_health -= dmg;
 			ClampHealth();
 		}
 
 		public void AddHealth()
 		{
-			if (maxHealth < maxTotalHealth)
+			if (_maxHealth < _maxTotalHealth)
 			{
-				maxHealth += 1;
-				health = maxHealth;
+				_maxHealth += 1;
+				_health = _maxHealth;
 
-				OnHealthChanged?.Invoke();
+				HealthChangedEvent?.Invoke();
 			}
 		}
 
 		private void ClampHealth()
 		{
-			health = Mathf.Clamp(health, 0, maxHealth);
+			_health = Mathf.Clamp(_health, 0, _maxHealth);
 
-			OnHealthChanged?.Invoke();
+			HealthChangedEvent?.Invoke();
 		}
 	}

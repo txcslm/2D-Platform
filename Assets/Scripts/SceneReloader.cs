@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneReloader : MonoBehaviour
 {
-	[SerializeField] private LayerMask layerMask;
+	[SerializeField] private LayerMask _layerMask;
 
 	public static void ReloadScene()
 	{
@@ -14,7 +14,7 @@ public class SceneReloader : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if ((layerMask.value & 1 << other.gameObject.layer) != 0)
+		if ((_layerMask.value & 1 << other.gameObject.layer) != 0)
 			ReloadScene();
 	}
 }

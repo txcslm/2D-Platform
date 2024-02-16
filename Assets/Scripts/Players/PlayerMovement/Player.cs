@@ -27,8 +27,6 @@ namespace Players.PlayerMovement
 			Move(horizontalInput);
 
 			_animator.SetFloat(Speed, Mathf.Abs(horizontalInput));
-			
-			Debug.Log($"IsGrounded: {IsGrounded()}, CurrentState: {_currentState}");
 
 			switch (_currentState)
 			{
@@ -61,7 +59,6 @@ namespace Players.PlayerMovement
 		{
 			float delayToGameOver = 1f;
 			
-			Debug.Log("Character is dying.");
 			base.Die();
 			Invoke(nameof(GameOver), delayToGameOver);
 		}

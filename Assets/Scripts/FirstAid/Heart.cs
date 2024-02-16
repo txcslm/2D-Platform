@@ -1,5 +1,4 @@
 using System;
-using Players.PlayerStat;
 using UnityEngine;
 
 namespace FirstAid
@@ -8,13 +7,13 @@ namespace FirstAid
 	{
 		private PlayerStats _playerStats;
 
-		[SerializeField] private LayerMask playerLayer;
-		[SerializeField] private float recoverableHealth;
+		[SerializeField] private LayerMask _playerLayer;
+		[SerializeField] private float _recoverableHealth;
 
 		private void Start()
 		{
 			_playerStats = PlayerStats.Instance;
-    
+
 			if (_playerStats == null)
 				throw new Exception("_playerStats is null");
 		}
@@ -26,16 +25,18 @@ namespace FirstAid
 
 		private void OnTriggerEnter2D(Collider2D other)
 		{
+			if (_playerStats.Health == _playerStats.MaxTotalHealth)
+				return;
+
 			TryDestroyObject();
-			
-			if ((playerLayer.value & 1 << other.gameObject.layer) != 0)
+
+			if ((_playerLayer.value & 1 << other.gameObject.layer) != 0)
 			{
 				if (_playerStats.Health == _playerStats.MaxHealth)
 				{
 					_playerStats.AddHealth();
 				}
-				_playerStats.Heal(recoverableHealth);
-
+				_playerStats.Heal(_recoverableHealth);
 			}
 		}
 	}

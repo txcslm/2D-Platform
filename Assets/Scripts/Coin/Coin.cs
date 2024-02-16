@@ -4,19 +4,19 @@ using UnityEngine;
 [RequireComponent(typeof(ScoreCounter))]
 public class Coin : MonoBehaviour
 {
-	[SerializeField] private int scoreValue = 5;
-	[SerializeField] private ScoreCounter scoreCounter;
+	[SerializeField] private int _scoreValue = 5;
+	[SerializeField] private ScoreCounter _scoreCounter;
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		Player player = other.gameObject.GetComponent<Player>();
+		other.TryGetComponent(out Player player);
 
 		if (player != null)
 		{
 			Destroy(gameObject);
 
-			if (scoreCounter != null)
-				scoreCounter.IncreaseScore(scoreValue);
+			if (_scoreCounter != null)
+				_scoreCounter.IncreaseScore(_scoreValue);
 		}
 	}
 }
