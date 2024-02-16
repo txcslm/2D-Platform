@@ -17,10 +17,10 @@ public abstract class Character : MonoBehaviour
     protected readonly int Speed = Animator.StringToHash(nameof(Speed));
     protected readonly int Diyng = Animator.StringToHash(nameof(Diyng));
 
+    private PlayerStats _playerStats;
     protected Rigidbody2D _rigidbody2D;
     protected Animator _animator;
     protected CharacterState _currentState;
-    protected PlayerStats _playerStats;
     protected SpriteRenderer _spriteRenderer;
 
     protected enum CharacterState

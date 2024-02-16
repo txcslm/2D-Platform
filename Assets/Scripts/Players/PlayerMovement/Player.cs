@@ -1,4 +1,3 @@
-using EnemyMovement;
 using UnityEngine;
 
 namespace Players.PlayerMovement
@@ -75,13 +74,6 @@ namespace Players.PlayerMovement
 
 			_animator.SetTrigger(Jumping);
 			_rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce);
-		}
-
-
-		private void OnTriggerEnter2D(Collider2D other)
-		{
-			if (other.TryGetComponent(out Enemy enemy))
-				_playerStats.TakeDamage(enemy.damage);
 		}
 	}
 }

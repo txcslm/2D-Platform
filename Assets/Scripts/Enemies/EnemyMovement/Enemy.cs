@@ -11,7 +11,6 @@ namespace EnemyMovement
 		[SerializeField] private Transform _targetA;
 		[SerializeField] private Transform _targetB;
 		[SerializeField] private EnemyHealth _enemyHealthView;
-		[SerializeField] private float _health;
 		[SerializeField] private LayerMask _hitBox;
 
 		private Transform _target;
@@ -98,10 +97,7 @@ namespace EnemyMovement
 		{
 			if (other.transform != _target)
 				return;
-
-			if (other.TryGetComponent(out Player player))
-				_enemyHealthView.TakeDamage(player.damage);
-
+			
 			SetTarget(_target == _targetA ? _targetB : _targetA);
 		}
 

@@ -27,9 +27,7 @@ namespace FirstAid
 		{
 			if (_playerStats.Health == _playerStats.MaxTotalHealth)
 				return;
-
-			TryDestroyObject();
-
+			
 			if ((_playerLayer.value & 1 << other.gameObject.layer) != 0)
 			{
 				if (_playerStats.Health == _playerStats.MaxHealth)
@@ -38,6 +36,8 @@ namespace FirstAid
 				}
 				_playerStats.Heal(_recoverableHealth);
 			}
+
+			TryDestroyObject();
 		}
 	}
 }
