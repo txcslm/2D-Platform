@@ -5794,7 +5794,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 8
   groundRaycastDistance: 1.19
-  groundLayerMask:
+  _groundLayerMask:
     serializedVersion: 2
     m_Bits: 8
   _enemyAttackRange:
@@ -5812,9 +5812,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0b64c0b1dccc64d91eee52d85267bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  maxHealth: 3
-  maxTotalHealth: 5
+  _health: 3
+  _maxHealth: 3
+  _maxTotalHealth: 5
 --- !u!1001 &94556609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6510,8 +6510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0f78e4acfe21a4594760304164796e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartsParent: {fileID: 1513727993}
-  heartContainerPrefab: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
+  _heartsParent: {fileID: 1513727993}
+  _heartContainerPrefab: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
 --- !u!4 &272627511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2071477925979347504, guid: d1394c09741d4144ab22339b39cf4c49, type: 3}
@@ -8890,9 +8890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab739c26edf3844d97c786f1eaabf06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  _layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!61 &641769748
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10070,8 +10070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172078cca960421a87fafd84278f53e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1005953019}
-  defaultTarget: {fileID: 762708195}
+  _enemy: {fileID: 1005953019}
+  _defaultTarget: {fileID: 1474321853}
 --- !u!1001 &933961646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10869,6 +10869,14 @@ PrefabInstance:
       objectReference: {fileID: 762708195}
     - target: {fileID: 2504109975060051989, guid: da1427b9e676007419667a6b484a471c, type: 3}
       propertyPath: targetB
+      value: 
+      objectReference: {fileID: 1425361903}
+    - target: {fileID: 2504109975060051989, guid: da1427b9e676007419667a6b484a471c, type: 3}
+      propertyPath: _targetA
+      value: 
+      objectReference: {fileID: 762708195}
+    - target: {fileID: 2504109975060051989, guid: da1427b9e676007419667a6b484a471c, type: 3}
+      propertyPath: _targetB
       value: 
       objectReference: {fileID: 1425361903}
     - target: {fileID: 2504109975060051989, guid: da1427b9e676007419667a6b484a471c, type: 3}
@@ -13546,6 +13554,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 341038189}
     - target: {fileID: 869671456980346850, guid: fb7b98e5741a6b74ba4486ecc31a5d66, type: 3}
+      propertyPath: _targetA
+      value: 
+      objectReference: {fileID: 341038188}
+    - target: {fileID: 869671456980346850, guid: fb7b98e5741a6b74ba4486ecc31a5d66, type: 3}
+      propertyPath: _targetB
+      value: 
+      objectReference: {fileID: 341038189}
+    - target: {fileID: 869671456980346850, guid: fb7b98e5741a6b74ba4486ecc31a5d66, type: 3}
       propertyPath: _enemyHealth
       value: 
       objectReference: {fileID: 0}
@@ -13945,6 +13961,14 @@ PrefabInstance:
       objectReference: {fileID: 1474321853}
     - target: {fileID: 7886995677034299989, guid: da05079e7d376574a9b65621fff33337, type: 3}
       propertyPath: targetB
+      value: 
+      objectReference: {fileID: 213479492}
+    - target: {fileID: 7886995677034299989, guid: da05079e7d376574a9b65621fff33337, type: 3}
+      propertyPath: _targetA
+      value: 
+      objectReference: {fileID: 1474321853}
+    - target: {fileID: 7886995677034299989, guid: da05079e7d376574a9b65621fff33337, type: 3}
+      propertyPath: _targetB
       value: 
       objectReference: {fileID: 213479492}
     - target: {fileID: 7886995677034299989, guid: da05079e7d376574a9b65621fff33337, type: 3}
@@ -14994,8 +15018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172078cca960421a87fafd84278f53e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 2138583127}
-  defaultTarget: {fileID: 341038188}
+  _enemy: {fileID: 2138583127}
+  _defaultTarget: {fileID: 341038188}
 --- !u!4 &2052051626 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2071477925979347504, guid: d1394c09741d4144ab22339b39cf4c49, type: 3}
@@ -15113,8 +15137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172078cca960421a87fafd84278f53e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1992409850}
-  defaultTarget: {fileID: 1474321853}
+  _enemy: {fileID: 1992409850}
+  _defaultTarget: {fileID: 1474321853}
 --- !u!1001 &2130831917
 PrefabInstance:
   m_ObjectHideFlags: 0
