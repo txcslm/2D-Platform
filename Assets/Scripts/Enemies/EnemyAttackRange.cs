@@ -8,6 +8,6 @@ public class EnemyAttackRange : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.TryGetComponent(out Enemy enemy))
-			_playerStats.TakeDamage(enemy.damage);
+			_playerStats.TakeDamage(enemy.Damage);
 	}
 }

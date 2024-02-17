@@ -49,9 +49,9 @@ namespace EnemyMovement
 			_target = target;
 		}
 
-		private void DestroyEnemy()
+		public void TakeDamage(float damage)
 		{
-			Destroy(gameObject);
+			_enemyHealthView.TakeDamage(damage);
 		}
 
 		protected override void Die()
@@ -81,7 +81,12 @@ namespace EnemyMovement
 					break;
 			}
 		}
-
+		
+		private void DestroyEnemy()
+		{
+			Destroy(gameObject);
+		}
+		
 		private void Patrol()
 		{
 			SetTarget(_targetA);

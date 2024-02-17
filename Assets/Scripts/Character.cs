@@ -6,13 +6,13 @@ public abstract class Character : MonoBehaviour
 {
     protected const string HorizontalInput = "Horizontal";
     
-    [SerializeField] public float damage;
     
     [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] protected float jumpForce = 10f; 
     [SerializeField] protected float groundRaycastDistance = 0.1f;
     
     [SerializeField] private LayerMask _groundLayerMask;
+    [field: SerializeField] public float Damage { get; private set; }
 
     protected readonly int Speed = Animator.StringToHash(nameof(Speed));
     protected readonly int Diyng = Animator.StringToHash(nameof(Diyng));

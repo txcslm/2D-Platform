@@ -8,9 +8,7 @@ public class EnemyHealth : MonoBehaviour
 	
 	private const float MinHealth = 0f;
 	
-	
 	public event Action<float> ValueChanged;
-	
 
 	private void Awake() =>
 		CurrentHealth = MaxHealth;
