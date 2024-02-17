@@ -11652,10 +11652,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7743610367679674065, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7052611468747724343, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1641016920}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
 --- !u!4 &1305138302 stripped
 Transform:
@@ -12730,51 +12727,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1394c09741d4144ab22339b39cf4c49, type: 3}
---- !u!1 &1641016912 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7052611468747724343, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
-  m_PrefabInstance: {fileID: 1303151330}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1641016913 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6687143397395939228, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
-  m_PrefabInstance: {fileID: 1303151330}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641016912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0b64c0b1dccc64d91eee52d85267bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1641016914 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4337643282955980854, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
-  m_PrefabInstance: {fileID: 1303151330}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641016912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956f71d2e0386f344a84c0e3a7ae84af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1641016920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641016912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5541dfabd74d41a448a001ecb7834d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rayDistance: 2
-  _playerStats: {fileID: 1641016913}
-  _player: {fileID: 1641016914}
-  _enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1001 &1641235702
 PrefabInstance:
   m_ObjectHideFlags: 0
