@@ -11632,6 +11632,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2945813891553951524, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
+      propertyPath: _rayDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945813891553951524, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
+      propertyPath: _vampirismDuration
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3458284858761271870, guid: 41731d8bc525fa9419ebf29724af22b7, type: 3}
       propertyPath: m_SortingOrder
       value: 1000
