@@ -13,6 +13,7 @@ public class VampireRay : MonoBehaviour
 
     private bool _isVampirismActive = false;
     private float _vampirismStartTime;
+    private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
     private void Update()
     {
@@ -29,7 +30,7 @@ public class VampireRay : MonoBehaviour
 
     private void UpdateVampirism()
     {
-        if (Time.fixedTime - _vampirismStartTime >= _vampirismDuration)
+        if (Time.time - _vampirismStartTime >= _vampirismDuration)
         {
             _isVampirismActive = false;
         }
@@ -37,7 +38,7 @@ public class VampireRay : MonoBehaviour
         {
             CastRay(transform.right);
 
-            if (_player.GetComponent<SpriteRenderer>().flipX)
+            if (_player.TryGetComponent(out SpriteRenderer spriteRenderer) && spriteRenderer.flipX)
                 CastRay(-transform.right);
         }
     }
@@ -45,12 +46,19 @@ public class VampireRay : MonoBehaviour
     private IEnumerator CastVampireRay()
     {
         _isVampirismActive = true;
-        _vampirismStartTime = Time.fixedTime;
+        _vampirismStartTime = Time.time;
 
-        while (_isVampirismActive)
+        while (Time.time - _vampirismStartTime < _vampirismDuration)
         {
-            yield return new WaitForFixedUpdate();
+            CastRay(transform.right);
+
+            if (_player.TryGetComponent(out SpriteRenderer spriteRenderer) && spriteRenderer.flipX)
+                CastRay(-transform.right);
+
+            yield return _waitForFixedUpdate;
         }
+
+        _isVampirismActive = false;
     }
 
     private void CastRay(Vector2 direction)
@@ -66,15 +74,12 @@ public class VampireRay : MonoBehaviour
 
     private void DamageAndHeal(RaycastHit2D hit)
     {
-        if (hit.collider != null)
+        if (hit.collider != null && hit.collider.TryGetComponent(out Enemy enemy))
         {
-            if (hit.collider.TryGetComponent(out Enemy enemy))
-            {
-                enemy.TakeDamage(_player.Damage);
+            enemy.TakeDamage(_player.Damage);
 
-                if (_playerStats != null)
-                    _playerStats.Heal(_player.Damage);
-            }
+            if (_playerStats != null)
+                _playerStats.Heal(_player.Damage);
         }
     }
 }
